@@ -7,7 +7,7 @@ import { injectable, inject } from "inversify";
 export class UserController implements interfaces.Controller {
     @httpGet("/")
     private index(): string {
-        return `Hello World`;
+        return `Hello World with Typescript`;
     }
 }
 
