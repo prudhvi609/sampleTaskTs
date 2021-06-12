@@ -8,11 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const inversify_express_utils_1 = require("inversify-express-utils");
+const inversify_1 = require("inversify");
+const constant_1 = require("../constant");
 let UserController = class UserController {
+    constructor(IUser) {
+        this.IUser = IUser;
+    }
     index() {
         return `Hello World with Typescript`;
+    }
+    listUsers() {
+        return this.IUser.listUsers();
     }
 };
 __decorate([
@@ -21,7 +32,15 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
 ], UserController.prototype, "index", null);
+__decorate([
+    inversify_express_utils_1.httpGet("/list"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Array)
+], UserController.prototype, "listUsers", null);
 UserController = __decorate([
-    inversify_express_utils_1.controller("/user")
+    inversify_express_utils_1.controller("/user"),
+    __param(0, inversify_1.inject(constant_1.SERVICE_IDENTIFIER.UserService)),
+    __metadata("design:paramtypes", [Object])
 ], UserController);
 exports.UserController = UserController;
