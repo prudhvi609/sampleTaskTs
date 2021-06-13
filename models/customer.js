@@ -21,31 +21,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 const UserSchema = new mongoose_1.Schema({
-    eMailId: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
+    emailId: { type: String, required: true, unique: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     mobileNumber: { type: Number, required: false },
     hashedPassword: { type: String, required: true },
     status: { type: Boolean, required: false },
     roleId: { type: String, required: true },
 });
 // Export the model and return your IUser interface
-const UserModel = mongoose_1.default.model('users', UserSchema);
-exports.default = UserModel;
-// export class UserModel {
-//     constructor(id: String, name: string, eMailId: string, mobileNumber: String, hashedPassword: String, status: Boolean, roleId: String) {
-//         this.id = id;
-//         this.name = name;
-//         this.eMailId = eMailId;
-//         this.mobileNumber = mobileNumber;
-//         this.hashedPassword = hashedPassword;
-//         this.status = status;
-//         this.roleId = roleId;
-//     }
-//     public id: String;
-//     public name: string;
-//     public eMailId: string;
-//     public mobileNumber: String;
-//     public hashedPassword: String;
-//     public status: Boolean;
-//     public roleId: String;
-// }
+const User = mongoose_1.default.model('customers', UserSchema);
+exports.default = User;

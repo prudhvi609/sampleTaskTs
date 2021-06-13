@@ -1,10 +1,11 @@
-import { UserModel } from "../models/usersModel";
+import { IUserModel } from "../models/usersModel";
+import { UserDto } from "../dto/UserDto";
 
 export interface IUser {
-    addUser(userObj: UserModel): number,
-    updateUserById(id: String, updaeObj: UserModel): UserModel,
-    listUsers(): UserModel[],
-    getUserById(id: String): UserModel
-    deleteUserById(id: String): UserModel
+    addUser(userObj: UserDto): UserDto,
+    updateUserById(id: String, updaeObj: UserDto): UserDto,
+    listUsers(): UserDto[],
+    getUserById(id: String): UserDto
+    deleteUserById(id: String): UserDto
 }
 

@@ -12,18 +12,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserController = void 0;
 const inversify_express_utils_1 = require("inversify-express-utils");
 const inversify_1 = require("inversify");
 const constant_1 = require("../constant");
+const UserDto_1 = require("../dto/UserDto");
 let UserController = class UserController {
-    constructor(IUser) {
-        this.IUser = IUser;
+    constructor(userService) {
+        this.userService = userService;
     }
     index() {
         return `Hello World with Typescript`;
     }
     listUsers() {
-        return this.IUser.listUsers();
+        return this.userService.listUsers();
+    }
+    addUser() {
+        return this.userService.addUser({ "id": "", "name": "prudhvi", "eMailId": "prudhvi@gmail.com", "mobileNumber": "9192939495", "hashedPassword": "abc@123", "status": true, "roleId": "a" });
     }
 };
 __decorate([
@@ -38,6 +43,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Array)
 ], UserController.prototype, "listUsers", null);
+__decorate([
+    inversify_express_utils_1.httpPost("/add-user"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", UserDto_1.UserDto)
+], UserController.prototype, "addUser", null);
 UserController = __decorate([
     inversify_express_utils_1.controller("/user"),
     __param(0, inversify_1.inject(constant_1.SERVICE_IDENTIFIER.UserService)),

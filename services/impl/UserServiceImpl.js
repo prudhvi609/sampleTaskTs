@@ -5,27 +5,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const usersModel_1 = require("../../models/usersModel");
+exports.UserServiceImpl = void 0;
+const usersModel_1 = __importDefault(require("../../models/usersModel"));
 const inversify_1 = require("inversify");
+const UserDto_1 = require("../../dto/UserDto");
 let UserServiceImpl = class UserServiceImpl {
     constructor() {
         this.usersList = new Array();
     }
     addUser(userObj) {
-        return this.usersList.push(userObj);
+        let user = usersModel_1.default.create({ "id": "", "name": "prudhvi", "eMailId": "prudhvi@gmail.com", "mobileNumber": "9192939495", "hashedPassword": "abc@123", "status": true, "roleId": "a" });
+        return userObj;
+        // return this.usersList.push(userObj);
     }
     updateUserById(id, updateObj) {
-        return new usersModel_1.UserModel('1', 'abc', 'abc@gmail.com', 9897877676, 'abc@123', true, "321");
+        return new UserDto_1.UserDto('1', 'abc', 'abc@gmail.com', "9897877676", 'abc@123', true, "321");
     }
     listUsers() {
         return this.usersList;
     }
     getUserById(id) {
-        return new usersModel_1.UserModel('1', 'abc', 'abc@gmail.com', 9897877676, 'abc@123', true, "321");
+        return new UserDto_1.UserDto('1', 'abc', 'abc@gmail.com', "9897877676", 'abc@123', true, "321");
     }
     deleteUserById(id) {
-        return new usersModel_1.UserModel('1', 'abc', 'abc@gmail.com', 9897877676, 'abc@123', true, "321");
+        return new UserDto_1.UserDto('1', 'abc', 'abc@gmail.com', "9897877676", 'abc@123', true, "321");
     }
 };
 UserServiceImpl = __decorate([
